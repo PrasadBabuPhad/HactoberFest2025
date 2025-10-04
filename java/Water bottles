@@ -1,0 +1,25 @@
+public class Solution {
+    public int numWaterBottles(int numBottles, int numExchange) {
+        int count = numBottles; // Step 1: Drink all the bottles you have initially
+
+        // Step 2: Keep exchanging while you have enough empty bottles
+        while (numBottles >= numExchange) {
+            int newBottles = numBottles / numExchange;     // bottles you get by exchange
+            count += newBottles;                           // add them to total drunk
+            numBottles = newBottles + (numBottles % numExchange); // update total bottles
+        }
+
+        return count; // Step 3: Return total bottles drunk
+    }
+
+    // 🧪 Driver code to test the logic
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        int numBottles = 15;
+        int numExchange = 4;
+
+        int result = sol.numWaterBottles(numBottles, numExchange);
+        System.out.println("Total sodas you can drink: " + result);
+    }
+}
